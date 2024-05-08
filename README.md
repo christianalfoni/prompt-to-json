@@ -7,12 +7,14 @@ Prompt LLMs with structured and reliable JSON response
 ```ts
 import { promptToJson, schema } from "prompt-to-json";
 
-const wordsRhyming = await promptToJson(
+const { rhymes } = await promptToJson(
   "Give me 5 words rhyming with cool",
-  schema.array(
-    schema.string("A word that rhymes"),
-    "A list of words that rhymes"
-  ),
+  {
+    rhymes: schema.array(
+      schema.string("A word that rhymes"),
+      "A list of words that rhymes"
+    ),
+  },
   (prompt) => someLLM.addMessage(prompt)
 );
 ```
