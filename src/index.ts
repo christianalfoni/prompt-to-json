@@ -1,5 +1,5 @@
+import JSON5 from "json5";
 import { ExtractValueType, ValueTypes } from "./schema";
-
 import { anyOf, string, array, boolean, object, enums } from "./schema";
 
 export const schema = {
@@ -47,7 +47,7 @@ export async function promptToJson<T extends Record<string, ValueTypes>>(
 ) {
   const response = await sendPrompt(createJsonPrompt(prompt, json));
 
-  return JSON.parse(response) as {
+  return JSON5.parse(response) as {
     [K in keyof T]: ExtractValueType<T[K]>;
   };
 }
