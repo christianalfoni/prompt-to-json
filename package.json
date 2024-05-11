@@ -1,6 +1,6 @@
 {
   "name": "prompt-to-json",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "module": "./dist/esm/index.js",
   "main": "./dist/esm/index.js",
   "exports": {

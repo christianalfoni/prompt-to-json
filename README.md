@@ -5,18 +5,19 @@ Prompt LLMs with structured and reliable JSON response
 ## Example
 
 ```ts
-import { promptToJson, schema } from "prompt-to-json";
+import { createPromptToJson, schema } from "prompt-to-json";
 
-const { rhymes } = await promptToJson(
-  "Give me 5 words rhyming with cool",
-  {
-    rhymes: schema.array(
-      schema.string("A word that rhymes"),
-      "A list of words that rhymes"
-    ),
-  },
-  (prompt) => someLLM.addMessage(prompt)
-);
+const promptRhymes = createPromptToJson({
+  schema: schema.array(
+    schema.string("A word that rhymes"),
+    "A list of words that rhymes"
+  ),
+  sendPrompt: (prompt) => someLLM.completion.create(prompt),
+  // Optionally add for more complex expectations of JSON response
+  examples: [{ rhymes: ["ice", "spice"] }],
+});
+
+const { rhymes } = await promptRhymes("Give me 5 words rhyming with cool");
 ```
 
 ## Why?
