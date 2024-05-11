@@ -65,7 +65,7 @@ export async function promptToJson<T extends Record<string, ValueTypes>>(
   };
 }
 
-export async function createPromptToJson<
+export function createPromptToJson<
   T extends Record<string, ValueTypes>,
 >(params: {
   schema: T;
