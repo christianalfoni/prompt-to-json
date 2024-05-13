@@ -1,15 +1,9 @@
 {
   "name": "prompt-to-json",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "module": "./dist/esm/index.js",
-  "main": "./dist/esm/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "types": "./dist/esm/index.d.ts"
-    }
-  },
-  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "typings": "./dist/esm/index.d.ts",
   "scripts": {
     "build": "yarn clean && yarn build:cjs && yarn build:esm && bash ./fixModuleTypes",
     "build:cjs": "tsc -p ./tsconfig.build-cjs.json",
